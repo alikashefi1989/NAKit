@@ -58,13 +58,13 @@ export const getButtonStyleByType = (
       if (disabled)
         return {
           borderColor: 'transparent',
-          backgroundColor: theme?.color.ordinalColors.neural[100],
-          color: theme?.color.ordinalColors.neural[400],
+          backgroundColor: theme?.color.ordinalColors.neural_light[100],
+          color: theme?.color.ordinalColors.neural_light[400],
           cursor: 'not-allowed',
         }
       if (hoverd)
         return {
-          backgroundColor: theme?.color.ordinalColors.afra[700],
+          backgroundColor: theme?.color.ordinalColors.primary[700],
           cursor: 'pointer',
         }
       return {
@@ -72,31 +72,31 @@ export const getButtonStyleByType = (
         paddingBlock: '0.5rem',
         borderColor: 'transparent',
         borderRadius: '0.375rem',
-        backgroundColor: theme?.color.ordinalColors.afra[500],
+        backgroundColor: theme?.color.ordinalColors.primary[500],
         color: theme?.color.solid.white,
         cursor: 'pointer',
       }
     case 'OUTLINE':
       if (disabled)
         return {
-          borderColor: theme?.color.ordinalColors.neural[400],
-          color: theme?.color.ordinalColors.neural[400],
-          backgroundColor: theme?.color.ordinalColors.neural[100],
+          borderColor: theme?.color.ordinalColors.neural_light[400],
+          color: theme?.color.ordinalColors.neural_light[400],
+          backgroundColor: theme?.color.ordinalColors.neural_light[100],
           cursor: 'not-allowed',
         }
       if (hoverd)
         return {
-          borderColor: theme?.color.ordinalColors.afra[700],
-          color: theme?.color.ordinalColors.afra[500],
-          backgroundColor: theme?.color.ordinalColors.neural[50],
+          borderColor: theme?.color.ordinalColors.primary[700],
+          color: theme?.color.ordinalColors.primary[500],
+          backgroundColor: theme?.color.ordinalColors.neural_light[50],
           cursor: 'pointer',
         }
       return {
         paddingInline: '1.5rem',
         paddingBlock: '0.5rem',
         borderRadius: '0.375rem',
-        borderColor: theme?.color.ordinalColors.afra[500],
-        color: theme?.color.ordinalColors.afra[500],
+        borderColor: theme?.color.ordinalColors.primary[500],
+        color: theme?.color.ordinalColors.primary[500],
         backgroundColor: 'transparent',
         cursor: 'pointer',
       }
@@ -105,35 +105,35 @@ export const getButtonStyleByType = (
         return {
           borderColor: 'transparent',
           backgroundColor: 'transparent',
-          color: theme?.color.ordinalColors.neural[400],
+          color: theme?.color.ordinalColors.neural_light[400],
           cursor: 'not-allowed',
         }
       if (hoverd)
         return {
           borderColor: 'transparent',
           backgroundColor: 'transparent',
-          color: theme?.color.ordinalColors.afra[700],
+          color: theme?.color.ordinalColors.primary[700],
           cursor: 'pointer',
         }
       return {
         borderColor: 'transparent',
         backgroundColor: 'transparent',
-        color: theme?.color.ordinalColors.afra[500],
+        color: theme?.color.ordinalColors.primary[500],
         cursor: 'pointer',
       }
     case 'FILLED_SECONDARY':
       if (disabled)
         return {
           borderColor: 'transparent',
-          backgroundColor: theme?.color.ordinalColors.neural[100],
-          color: theme?.color.ordinalColors.neural[400],
+          backgroundColor: theme?.color.ordinalColors.neural_light[100],
+          color: theme?.color.ordinalColors.neural_light[400],
           cursor: 'not-allowed',
         }
       if (hoverd)
         return {
           borderColor: 'transparent',
-          color: theme?.color.ordinalColors.afra[700],
-          backgroundColor: theme?.color.ordinalColors.afra[100],
+          color: theme?.color.ordinalColors.primary[700],
+          backgroundColor: theme?.color.ordinalColors.primary[100],
           cursor: 'pointer',
         }
       return {
@@ -141,31 +141,31 @@ export const getButtonStyleByType = (
         paddingBlock: '0.5rem',
         borderRadius: '0.375rem',
         borderColor: 'transparent',
-        color: theme?.color.ordinalColors.afra[500],
-        backgroundColor: theme?.color.ordinalColors.afra[0],
+        color: theme?.color.ordinalColors.primary[500],
+        backgroundColor: theme?.color.ordinalColors.primary[0],
         cursor: 'pointer',
       }
     case 'OUTLINE_SECONDARY':
       if (disabled)
         return {
           borderColor: 'transparent',
-          backgroundColor: theme?.color.ordinalColors.neural[100],
-          color: theme?.color.ordinalColors.neural[400],
+          backgroundColor: theme?.color.ordinalColors.neural_light[100],
+          color: theme?.color.ordinalColors.neural_light[400],
           cursor: 'not-allowed',
         }
       if (hoverd)
         return {
-          borderColor: theme?.color.ordinalColors.neural[200],
-          color: theme?.color.ordinalColors.afra[500],
-          backgroundColor: theme?.color.ordinalColors.neural[50],
+          borderColor: theme?.color.ordinalColors.neural_light[200],
+          color: theme?.color.ordinalColors.primary[500],
+          backgroundColor: theme?.color.ordinalColors.neural_light[50],
           cursor: 'pointer',
         }
       return {
         paddingInline: '1.5rem',
         paddingBlock: '0.5rem',
         borderRadius: '0.375rem',
-        borderColor: theme?.color.ordinalColors.neural[200],
-        color: theme?.color.ordinalColors.afra[500],
+        borderColor: theme?.color.ordinalColors.neural_light[200],
+        color: theme?.color.ordinalColors.primary[500],
         backgroundColor: theme?.color.solid.white,
         cursor: 'pointer',
       }
@@ -173,63 +173,63 @@ export const getButtonStyleByType = (
       if (disabled)
         return {
           borderColor: 'transparent',
-          color: theme?.color.ordinalColors.neural[400],
-          backgroundColor: theme?.color.ordinalColors.neural[100],
+          color: theme?.color.ordinalColors.neural_light[400],
+          backgroundColor: theme?.color.ordinalColors.neural_light[100],
           cursor: 'not-allowed',
         }
       if (hoverd)
         return {
-          borderColor: theme?.color.ordinalColors.neural[200],
-          color: theme?.color.ordinalColors.neural[900],
-          backgroundColor: theme?.color.ordinalColors.neural[50],
+          borderColor: theme?.color.ordinalColors.neural_light[200],
+          color: theme?.color.ordinalColors.neural_light[900],
+          backgroundColor: theme?.color.ordinalColors.neural_light[50],
           cursor: 'pointer',
         }
       return {
         borderColor: 'transparent',
         backgroundColor: 'transparent',
-        color: theme?.color.ordinalColors.afra[500],
+        color: theme?.color.ordinalColors.primary[500],
         cursor: 'pointer',
       }
     case 'SUCCESS':
       if (disabled)
         return {
           borderColor: 'transparent',
-          color: theme?.color.ordinalColors.neural[400],
-          backgroundColor: theme?.color.ordinalColors.neural[100],
+          color: theme?.color.ordinalColors.neural_light[400],
+          backgroundColor: theme?.color.ordinalColors.neural_light[100],
           cursor: 'not-allowed',
         }
       if (hoverd)
         return {
-          borderColor: theme?.color.ordinalColors.greenSuccess[700],
+          borderColor: theme?.color.ordinalColors.success[700],
           color: theme?.color.solid.white,
-          backgroundColor: theme?.color.ordinalColors.greenSuccess[700],
+          backgroundColor: theme?.color.ordinalColors.success[700],
           cursor: 'pointer',
         }
       return {
-        borderColor: theme?.color.ordinalColors.greenSuccess[600],
+        borderColor: theme?.color.ordinalColors.success[600],
         color: theme?.color.solid.white,
-        backgroundColor: theme?.color.ordinalColors.greenSuccess[600],
+        backgroundColor: theme?.color.ordinalColors.success[600],
         cursor: 'pointer',
       }
     case 'ERROR':
       if (disabled)
         return {
           borderColor: 'transparent',
-          color: theme?.color.ordinalColors.neural[400],
-          backgroundColor: theme?.color.ordinalColors.neural[100],
+          color: theme?.color.ordinalColors.neural_light[400],
+          backgroundColor: theme?.color.ordinalColors.neural_light[100],
           cursor: 'not-allowed',
         }
       if (hoverd)
         return {
-          borderColor: theme?.color.ordinalColors.redError[600],
+          borderColor: theme?.color.ordinalColors.danger[600],
           color: theme?.color.solid.white,
-          backgroundColor: theme?.color.ordinalColors.redError[600],
+          backgroundColor: theme?.color.ordinalColors.danger[600],
           cursor: 'pointer',
         }
       return {
-        borderColor: theme?.color.ordinalColors.redError[500],
+        borderColor: theme?.color.ordinalColors.danger[500],
         color: theme?.color.solid.white,
-        backgroundColor: theme?.color.ordinalColors.redError[500],
+        backgroundColor: theme?.color.ordinalColors.danger[500],
         cursor: 'pointer',
       }
     case 'SUCCESS_TEXT':
@@ -237,20 +237,20 @@ export const getButtonStyleByType = (
         return {
           borderColor: 'transparent',
           backgroundColor: 'transparent',
-          color: theme?.color.ordinalColors.neural[400],
+          color: theme?.color.ordinalColors.neural_light[400],
           cursor: 'not-allowed',
         }
       if (hoverd)
         return {
           borderColor: 'transparent',
           backgroundColor: 'transparent',
-          color: theme?.color.ordinalColors.greenSuccess[700],
+          color: theme?.color.ordinalColors.success[700],
           cursor: 'pointer',
         }
       return {
         borderColor: 'transparent',
         backgroundColor: 'transparent',
-        color: theme?.color.ordinalColors.greenSuccess[600],
+        color: theme?.color.ordinalColors.success[600],
         cursor: 'pointer',
       }
     case 'ERROR_TEXT':
@@ -258,20 +258,20 @@ export const getButtonStyleByType = (
         return {
           borderColor: 'transparent',
           backgroundColor: 'transparent',
-          color: theme?.color.ordinalColors.neural[400],
+          color: theme?.color.ordinalColors.neural_light[400],
           cursor: 'not-allowed',
         }
       if (hoverd)
         return {
           borderColor: 'transparent',
           backgroundColor: 'transparent',
-          color: theme?.color.ordinalColors.redError[600],
+          color: theme?.color.ordinalColors.danger[600],
           cursor: 'pointer',
         }
       return {
         borderColor: 'transparent',
         backgroundColor: 'transparent',
-        color: theme?.color.ordinalColors.redError[500],
+        color: theme?.color.ordinalColors.danger[500],
         cursor: 'pointer',
       }
 

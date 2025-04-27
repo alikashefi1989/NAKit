@@ -1,5 +1,5 @@
 // .storybook/GlobalStyles.tsx
-import { Global, css } from '@emotion/react';
+import { Global } from '@emotion/react';
 import React, { useMemo } from 'react';
 import LanguageModel from '../src/models/language-model';
 import useStore from '../src/state-management/store';
