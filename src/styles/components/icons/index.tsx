@@ -2,7 +2,7 @@ import { CSSProperties } from 'react'
 import styled from '@emotion/styled'
 
 export interface IconWrapperProps {
-    size: '1' | '1.25' | '1.5' | '2'
+    size: '1' | '0.75' | '1.5' | '2'
     rounded?: boolean
     style?: CSSProperties
 }
