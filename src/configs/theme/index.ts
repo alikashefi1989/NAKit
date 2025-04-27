@@ -6,14 +6,18 @@ const appTheme = (darkMode: boolean) => (darkMode ? darkTheme : lightTheme)
 export default appTheme
 
 export const appColors = {
-    neural: 'neural',
-    nakOrange: 'nakOrange',
-    orange: 'orange',
-    blue: 'blue',
-    redError: 'redError',
-    greenSuccess: 'greenSuccess',
-    violetByzantium: 'violetByzantium',
-    afra: 'afra',
+    neural_light: 'neural_light',
+    neural_dark: 'neural_dark',
+    primary: 'primary',
+    secondary: 'secondary',
+    sunset: 'sunset',
+    danger: 'danger',
+    warning: 'warning',
+    info: 'info',
+    success: 'success',
+    velvet: 'velvet',
+    accent: 'accent',
+    green: 'green',
 }
 
 export type AppColors = keyof typeof appColors
