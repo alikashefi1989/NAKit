@@ -29,8 +29,9 @@ const buttonSizeConfig: Record<ButtonSize, CSSProperties> = {
   },
   M: {
     height: '2.5rem',
-    fontSize: '0.875rem',
-    fontWeight: 600,
+    fontSize: '1rem',
+    fontWeight: 500,
+    // lineHeight: '1.5rem'
   },
   L: {
     height: '2.75rem',
@@ -311,12 +312,12 @@ export const getPaddingByIconAndType = (
     case 'M':
       if (hasIcon)
         return {
-          paddingBlock: '0.625rem',
-          paddingLeft: direction === 'rtl' ? '1.25rem' : '1.5rem',
-          paddingRight: direction === 'rtl' ? '1.5rem' : '1.25rem',
+          paddingBlock: '0.5rem',
+          paddingLeft: direction === 'rtl' ? '1.5rem' : '1rem',
+          paddingRight: direction === 'rtl' ? '1rem' : '1.5rem',
         }
       return {
-        paddingBlock: '0.375rem',
+        paddingBlock: '0.5rem',
         paddingInline: '1.5rem',
       }
     case 'L':

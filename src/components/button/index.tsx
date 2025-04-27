@@ -28,7 +28,7 @@ export type ButtonProps = ButtonWithIconProps | ButtonWithoutIconProps
 const Button: FC<ButtonProps> = ({ size, type, disabled, width, title, loading, hasIcon, icon: Icon, iconName, style, onClick }) => {
     const iconSize: IconWrapperProps['size'] = useMemo(() => {
         if (size === 'XS' || size === 'S') return '1'
-        if (size === 'M' || size === 'L') return '1.25'
+        if (size === 'M' || size === 'L') return '0.75'
         return '1.5'
     }, [size])
 

@@ -54,7 +54,7 @@ export const ButtonTitle = styled.span<Pick<ButtonWrapperProps, 'size'>>(
   ({ size }) => {
     return {
       boxSizing: 'border-box',
-      display: 'inline-flex',
+      display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       width: 'max-content',
