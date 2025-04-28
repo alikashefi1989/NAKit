@@ -14,12 +14,9 @@ tags: ['autodocs'],
 args: {
     name: 'Input',
     dir: 'rtl',
-    size: 'l',
-    label: Label,
+    size: 'm',
     labelText: 'Title',
     labelStyle: { fontSize: '0.75rem', fontWeight: 400 },
-    error: Error,
-    resetter: Resetter,
     disabled: false,
     borderHide: false,
     inputResetValue: '',
@@ -37,6 +34,9 @@ args: {
     } as any,
     defaultValue: { subject: '' },
     },
+    error: Error,
+    resetter: Resetter,
+    label: Label,
 },
     argTypes: {
         size: {
@@ -62,3 +62,29 @@ export default meta;
 type Story = StoryObj<StoryProps>;
 
 export const input: Story = {};
+
+export const inputWithError: Story = {
+    args: {
+      data: {
+        reactHookFormObject: {
+          register: () => ({}),
+          formState: {
+            errors: {
+              Input: {
+                type: 'required',
+                message: 'This is a required field',
+              },
+            },
+            isValid: false,
+            isSubmitting: false,
+          },
+          watch: () => '',
+          setValue: () => {},
+          getValues: () => ({}),
+          resetField: () => {},
+        } as any,
+        defaultValue: { subject: '' },
+      },
+    },
+  };
+

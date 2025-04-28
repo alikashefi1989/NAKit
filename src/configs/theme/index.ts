@@ -16,6 +16,7 @@ export const appColors = {
     info: 'info',
     success: 'success',
     velvet: 'velvet',
+    olive: 'olive',
     accent: 'accent',
     green: 'green',
 }

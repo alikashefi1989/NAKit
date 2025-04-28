@@ -12,7 +12,7 @@ const GlobalStyles = () => {
     const appFont: string = useMemo(() => (
         direction === 'ltr'
             ? 'url(/fonts/en/Inter-Regular.ttf)'
-            : 'url(/fonts/fa/IRANSansXFaNum-Regular.ttf)'
+            : 'url(/fonts/fa/Vazirmatn-FD-Regular.ttf)'
     ), [direction])
 
 
