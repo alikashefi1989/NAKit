@@ -37,7 +37,6 @@ const meta: Meta<StoryProps> = {
         },
         hasIcon: { control: 'boolean' },
 
-        // Only show iconName selector when hasIcon is true :contentReference[oaicite:0]{index=0}
         iconName: {
             control: { type: 'select' },
             options: Object.keys(iconList) as IconName[],
@@ -45,7 +44,6 @@ const meta: Meta<StoryProps> = {
             description: 'Choose which icon to render',
         },
 
-        // 'icon' no longer needs mapping; always use the Icon component :contentReference[oaicite:1]{index=1}
         icon: {
             control: false,
             table: { disable: true },
@@ -60,8 +58,6 @@ export default meta;
 type Story = StoryObj<StoryProps>;
 
 
-
-// Shows icon controls (iconName), Icon component is used under the hood
 export const button: Story = {
     args: {
         hasIcon: false,
