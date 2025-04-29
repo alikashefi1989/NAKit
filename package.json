@@ -1,8 +1,21 @@
 {
-  "name": "storybook-test",
+  "name": "nakit",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "dist/NAKit.cjs.js",
+  "module": "dist/NAKit.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/NAKit.esm.js",
+      "require": "./dist/NAKit.cjs.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -16,6 +29,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.56.1",
+    "vite-plugin-dts": "^4.5.3",
     "yup": "^1.6.1",
     "zustand": "^5.0.3"
   },

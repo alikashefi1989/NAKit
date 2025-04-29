@@ -52,60 +52,60 @@ export const InputUi = styled.input<any>(
       borderWidth: "0.0625rem",
       borderStyle: "solid",
       borderColor: getInputUiBorderColor(
-        theme as AppThemeModel,
         error ? true : false,
         disabled ? true : false,
-        borderHide ? true : false
+        borderHide ? true : false,
+        theme as AppThemeModel
       ),
-      borderRadius: (theme as AppThemeModel).radius.radiusXs,
+      borderRadius: (theme as AppThemeModel)?.radius.radiusXs,
       color: disabled
-        ? (theme as AppThemeModel).color.ordinalColors.neural_light[500]
-        : (theme as AppThemeModel).color.ordinalColors.neural_dark[400],
+        ? (theme as AppThemeModel)?.color?.ordinalColors?.neural_light[500]
+        : (theme as AppThemeModel)?.color?.ordinalColors?.neural_dark[400],
       paddingBlock:
         size === "l"
-          ? (theme as AppThemeModel).spacing.spacingS
-          : (theme as AppThemeModel).spacing.spacingXs,
-      paddingInline: (theme as AppThemeModel).spacing.spacingS,
+          ? (theme as AppThemeModel)?.spacing?.spacingS
+          : (theme as AppThemeModel)?.spacing?.spacingXs,
+      paddingInline: (theme as AppThemeModel)?.spacing?.spacingS,
       paddingRight: getInputUiPaddingRight(
-        theme as AppThemeModel,
         dir ? dir : "rtl",
         hasIcon ? true : false,
-        hasResetter ? true : false
+        hasResetter ? true : false,
+        theme as AppThemeModel
       ),
       paddingLeft: getInputUiPaddingLeft(
-        theme as AppThemeModel,
         dir ? dir : "rtl",
         hasIcon ? true : false,
-        hasResetter ? true : false
+        hasResetter ? true : false,
+        theme as AppThemeModel
       ),
       ":focus": {
         borderColor: getInputUiBorderColor(
-          theme as AppThemeModel,
           error ? true : false,
           disabled ? true : false,
-          borderHide ? true : false
+          borderHide ? true : false,
+          theme as AppThemeModel
         ),
         "& + .label-wrapper": {
           top: size === "l" ? "-0.625rem" : "-0.5rem",
           right: "0.75rem",
           transform: "none",
-          backgroundColor: (theme as AppThemeModel).color.solid.white,
+          backgroundColor: (theme as AppThemeModel)?.color?.solid?.white,
         },
       },
       ":focus-within": {
         borderColor: getInputUiBorderColor(
-          theme as AppThemeModel,
           error ? true : false,
           disabled ? true : false,
-          borderHide ? true : false
+          borderHide ? true : false,
+          theme as AppThemeModel
         ),
       },
       ":focus-visible": {
         borderColor: getInputUiBorderColor(
-          theme as AppThemeModel,
           error ? true : false,
           disabled ? true : false,
-          borderHide ? true : false
+          borderHide ? true : false,
+          theme as AppThemeModel
         ),
       },
       ":not(:placeholder-shown)": {
@@ -113,12 +113,13 @@ export const InputUi = styled.input<any>(
           top: size === "l" ? "-0.625rem" : "-0.5rem",
           right: "0.75rem",
           transform: "none",
-          backgroundColor: (theme as AppThemeModel).color.solid.white,
+          backgroundColor: (theme as AppThemeModel)?.color?.solid?.white,
         },
       },
       ":disabled": {
         backgroundColor: "transparent",
-        color: (theme as AppThemeModel).color.ordinalColors.neural_light[500],
+        color: (theme as AppThemeModel)?.color?.ordinalColors
+          ?.neural_light[500],
       },
     };
   }
@@ -178,37 +179,37 @@ export const CharacterCounterCmpWrapper = styled.div({
 });
 
 const getInputUiBorderColor = (
-  theme: AppThemeModel,
   error: boolean,
   disabled: boolean,
-  borderHide: boolean
-): string => {
-  if (disabled) return theme.color.ordinalColors.neural_light[200];
-  if (error) return theme.color.ordinalColors.danger[500];
+  borderHide: boolean,
+  theme?: AppThemeModel
+): string | undefined => {
+  if (disabled) return theme?.color?.ordinalColors?.neural_light[200];
+  if (error) return theme?.color?.ordinalColors?.danger[500];
   if (borderHide) return "transparent";
-  return theme.color.ordinalColors.neural_light[1000];
+  return theme?.color?.ordinalColors?.neural_light[1000];
 };
 
 const getInputUiPaddingRight = (
-  theme: AppThemeModel,
   dir: CSSProperties["direction"],
   hasIcon: boolean,
-  hasResetter: boolean
-): string => {
-  if (dir === "rtl") return theme.spacing.spacingS;
+  hasResetter: boolean,
+  theme?: AppThemeModel
+): string | undefined => {
+  if (dir === "rtl") return theme?.spacing.spacingS;
   if (hasIcon && hasResetter) return "3.75rem";
   if (hasIcon || hasResetter) return "2.25rem";
-  return theme.spacing.spacingS;
+  return theme?.spacing.spacingS;
 };
 
 const getInputUiPaddingLeft = (
-  theme: AppThemeModel,
   dir: CSSProperties["direction"],
   hasIcon: boolean,
-  hasResetter: boolean
-): string => {
-  if (dir === "ltr") return theme.spacing.spacingS;
+  hasResetter: boolean,
+  theme?: AppThemeModel
+): string | undefined => {
+  if (dir === "ltr") return theme?.spacing.spacingS;
   if (hasIcon && hasResetter) return "3.75rem";
   if (hasIcon || hasResetter) return "2.25rem";
-  return theme.spacing.spacingS;
+  return theme?.spacing.spacingS;
 };

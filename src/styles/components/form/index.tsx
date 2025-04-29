@@ -11,7 +11,7 @@ const FormElementWrapper = styled.div<{ theme?: AppThemeModel }>(({ theme }) => 
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'flex-start',
-        gap: `calc(${theme.spacing.spacingXs} / 10)`,
+        gap: `calc(${theme?.spacing?.spacingXs} / 10)`,
         backgroundColor: 'transparent',
     }
 })

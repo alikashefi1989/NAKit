@@ -21,19 +21,19 @@ export interface ButtonWrapperProps {
 const ButtonWrapper = styled.div<
   ButtonWrapperProps & { theme?: AppThemeModel }
 >(({ theme, width, size, type, hasIcon, disabled, style }) => {
+
   const direction: StoreModel['language']['dir'] = useStore<
     StoreModel['language']['dir']
   >((store: StoreModel) => store?.language?.dir)
-
   return {
     boxSizing: 'border-box',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: theme.spacing.spacingXs,
+    gap: theme?.spacing?.spacingXs,
     borderWidth: '0.0625rem',
     borderStyle: 'solid',
-    borderRadius: theme.spacing.spacingXs,
+    borderRadius: theme?.spacing?.spacingXs,
     direction,
     fontFamily: 'app-font',
     minWidth: 'max-content',
