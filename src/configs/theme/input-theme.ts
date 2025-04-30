@@ -4,7 +4,7 @@ const inputTheme: AppThemeModel['input'] = {
     general: {
         borderRadius: '0.5rem',
         backgroundColor: 'transparent',
-        border: '0.0625rem solid #ABABAB'
+        border: '0.0625rem solid #93A7A0 '
     },
     medium: {
         paddingInline: '0.5rem',

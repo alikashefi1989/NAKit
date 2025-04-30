@@ -16,6 +16,7 @@ export const appColors = {
     info: 'info',
     success: 'success',
     velvet: 'velvet',
+    olive: 'olive',
     accent: 'accent',
     green: 'green',
 }
@@ -77,14 +78,14 @@ export const appSpacing = {
 
 export type AppSpacing = keyof typeof appSpacing
 
-export const appRadious = {
-    radiousNone: 'radiousNone',
-    radiousXxs: 'radiousXxs',
-    radiousXs: 'radiousXs',
-    radiousS: 'radiousS',
-    radiousM: 'radiousM',
-    radiousL: 'radiousL',
-    radiousXl: 'radiousXl',
+export const appRadius = {
+    radiusNone: 'radiusNone',
+    radiusXxs: 'radiusXxs',
+    radiusXs: 'radiusXs',
+    radiusS: 'radiusS',
+    radiusM: 'radiusM',
+    radiusL: 'radiusL',
+    radiusXl: 'radiusXl',
 }
 
-export type AppRadious = keyof typeof appRadious
+export type AppRadius = keyof typeof appRadius
