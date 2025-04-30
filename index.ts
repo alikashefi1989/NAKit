@@ -27,4 +27,4 @@ export * from "./src/configs/theme";
 export { default as appTheme } from "./src/configs/theme";
 export {default as darkTheme} from "./src/configs/theme/dark-theme";
 export {default as lightTheme} from "./src/configs/theme/light-theme";
-export { default as CustomThemeProvider } from "./src/components/theme-provider";
+export { default as NakThemeProvider } from "./src/components/nak-theme-provider";
