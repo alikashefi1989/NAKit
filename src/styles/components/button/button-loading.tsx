@@ -79,16 +79,12 @@ const getButtonLoadingCirclesBackgroundColor = (
   type: ButtonProps["type"],
   theme?: AppThemeModel
 ): string | undefined => {
-  if (type === "FILLED") return theme?.color?.solid?.white;
-  if (type === "ERROR") return theme?.color?.solid?.white;
-  if (type === "TEXT") return theme?.color?.solid?.white;
-  if (type === "ERROR_TEXT") return theme?.color?.solid?.white;
-  if (type === "FILLED_SECONDARY") return theme?.color?.solid?.white;
-  if (type === "GREY_OUTLINE") return theme?.color?.solid?.white;
-  if (type === "OUTLINE") return theme?.color?.solid?.white;
-  if (type === "OUTLINE_SECONDARY") return theme?.color?.solid?.white;
-  if (type === "SUCCESS") return theme?.color?.solid?.white;
-  if (type === "SUCCESS_TEXT") return theme?.color?.solid?.white;
-
-  return undefined;
+  switch (type) {
+    case "PRIMARY":
+    case "SECONDARY":
+    case "TEXT":
+      return theme?.color?.solid?.white;
+    default:
+      return theme?.color?.solid?.white;
+  }
 };

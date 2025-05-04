@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC } from 'react'
 import iconList, { IconName } from './icon-list'
 import IconWrapper, { IconWrapperProps } from '../../styles/components/icons'

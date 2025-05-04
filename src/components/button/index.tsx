@@ -25,7 +25,7 @@ interface ButtonWithoutIconProps extends Omit<ButtonBaseProps, 'hasIcon'> {
 
 export type ButtonProps = ButtonWithIconProps | ButtonWithoutIconProps
 
-const Button: FC<ButtonProps> = ({ size, type, disabled, width, title, loading, hasIcon, icon: Icon, iconName, style, onClick }) => {
+const Button: FC<ButtonProps> = ({ size, type, disabled, width, title, loading, hasIcon, icon: Icon, iconName, style, onClick, pallet }) => {
     const iconSize: IconWrapperProps['size'] = useMemo(() => {
         if (size === 'XS' || size === 'S') return '1'
         if (size === 'M' || size === 'L') return '0.75'
@@ -51,6 +51,7 @@ const Button: FC<ButtonProps> = ({ size, type, disabled, width, title, loading, 
             hasIcon={hasIcon}
             style={style}
             onClick={onClickHandler}
+            pallet={pallet}
         >
             {
                 loading

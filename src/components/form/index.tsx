@@ -16,8 +16,8 @@ export type FormType = 'CREATE' | 'UPDATE'
 export interface FormProps<EntityModel extends Record<string, any>> {
     formType: FormType
     defaultValues: EntityModel
-    validationSchema: any
-    useFormProps: UseFormProps<EntityModel,any>
+    validationSchema?: any
+    useFormProps?: UseFormProps<EntityModel,any>
     fieldsRenderer: (data:{
         reactHookFormObject: UseFormReturn<EntityModel>,
         defaultValue: EntityModel
