@@ -5,6 +5,7 @@ import buttonSizeConfig, {
   ButtonType,
   getButtonStyleByType,
   getPaddingByIconAndType,
+  PalLetType,
 } from './button-config'
 import StoreModel from '../../../models/store-model'
 import useStore from '../../../state-management/store'
@@ -16,11 +17,12 @@ export interface ButtonWrapperProps {
   width?: CSSProperties['width']
   hasIcon: boolean
   style?: CSSProperties
+  pallet: PalLetType
 }
 
 const ButtonWrapper = styled.div<
   ButtonWrapperProps & { theme?: AppThemeModel }
->(({ theme, width, size, type, hasIcon, disabled, style }) => {
+>(({ theme, width, size, type, hasIcon, disabled, style, pallet }) => {
 
   const direction: StoreModel['language']['dir'] = useStore<
     StoreModel['language']['dir']
@@ -39,11 +41,17 @@ const ButtonWrapper = styled.div<
     minWidth: 'max-content',
     ...buttonSizeConfig[size],
     ...getPaddingByIconAndType(hasIcon, size, direction),
-    ...getButtonStyleByType(type, false, disabled, theme),
+    ...getButtonStyleByType(type, pallet, 'ENABLED', disabled, theme),
     ...style,
     width,
     ':hover': {
-      ...getButtonStyleByType(type, true, disabled, theme),
+      ...getButtonStyleByType(type, pallet, 'HOVERED', disabled, theme),
+    },
+    ':focus' : {
+      ...getButtonStyleByType(type, pallet, 'FOCUSED', disabled, theme),
+    },
+    ':active' : {
+      ...getButtonStyleByType(type, pallet, 'PRESSED', disabled, theme),
     },
   }
 })

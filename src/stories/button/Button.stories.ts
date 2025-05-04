@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Button from '../../components/button';
 import iconList, { IconName } from '../../components/icons/icon-list';
 import Icon from '../../components/icons/icon';
+import { PalLetType } from '../../styles/components/button/button-config';
 
 type StoryProps = React.ComponentProps<typeof Button>;
 
@@ -13,27 +14,24 @@ const meta: Meta<StoryProps> = {
         title: 'Click me',
         loading: false,
         size: 'M',
-        type: 'FILLED',
+        type: 'PRIMARY',
         disabled: false,
         hasIcon: false,
+        pallet: '1-Primary',
     },
     argTypes: {
         type: {
             control: { type: 'select' },
-            options: ['FILLED'
-                , 'OUTLINE'
-                , 'TEXT'
-                , 'FILLED_SECONDARY'
-                , 'OUTLINE_SECONDARY'
-                , 'GREY_OUTLINE'
-                , 'SUCCESS'
-                , 'ERROR'
-                , 'SUCCESS_TEXT'
-                , 'ERROR_TEXT'],
+            options: ['PRIMARY', 'SECONDARY', 'TEXT'],
         },
         size: {
             control: { type: 'select' },
             options: ['XS', 'S', 'M', 'L', 'XL'],
+        },
+        pallet: {
+            control: { type: 'select' },
+            options: ['1-Primary', '2-Info', '3-Danger', '4-Green', '5-Accent', '6-Secondary', '7-Olive'] satisfies PalLetType[],
+            description: 'Select color palette (mapped to theme colors)',
         },
         hasIcon: { control: 'boolean' },
 
