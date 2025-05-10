@@ -6,7 +6,7 @@ import { IconWrapperProps } from '../../styles/components/icons'
 import ButtonLoading from './button-loading'
 
 interface ButtonBaseProps extends ButtonWrapperProps {
-    title: string
+    title?: string
     loading: boolean
     onClick: (event: MouseEvent<HTMLDivElement>) => void
 }
@@ -27,8 +27,8 @@ export type ButtonProps = ButtonWithIconProps | ButtonWithoutIconProps
 
 const Button: FC<ButtonProps> = ({ size, type, disabled, width, title, loading, hasIcon, icon: Icon, iconName, style, onClick, pallet }) => {
     const iconSize: IconWrapperProps['size'] = useMemo(() => {
-        if (size === 'XS' || size === 'S') return '1'
-        if (size === 'M' || size === 'L') return '0.75'
+        if (size === 'XS' || size === 'S') return '0.75'
+        if (size === 'M' || size === 'L') return '1'
         return '1.5'
     }, [size])
 

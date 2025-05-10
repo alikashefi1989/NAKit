@@ -33,6 +33,15 @@ import ArrowDownGreen from './icons-components/arrow-down-green'
 import ArrowLeft from './arrow/arrow-left'
 import ArrowRight from './arrow/arrow-right'
 import HomeHashtagBusiness from './business/home-hashtag'
+import InfoIcon from './essetional/info'
+import WifiIcon from './hotel/wifi'
+import TvIcon from './hotel/tv-light'
+import TeaCupIcon from './hotel/tea-cup'
+import UserIcon from './hotel/user'
+import BarIcon from './hotel/Bar'
+import Restuarant from './hotel/restuarant'
+import BedIcon from './hotel/bed'
+
 
 const iconList = {
     triangleError: TriangleError,
@@ -69,7 +78,15 @@ const iconList = {
     arrowDownGreen: ArrowDownGreen,
     ArrowLeft:ArrowLeft,
     ArrowRight:ArrowRight,
-    HomeHashtagBusiness:HomeHashtagBusiness
+    HomeHashtagBusiness:HomeHashtagBusiness,
+    InfoIcon:InfoIcon,
+    WifiIcon:WifiIcon,
+    TvIcon:TvIcon,
+    TeaCupIcon:TeaCupIcon,
+    UserIcon:UserIcon,
+    BarIcon:BarIcon,
+    Restuarant:Restuarant,
+    BedIcon:BedIcon
 }
 
 export default iconList
