@@ -58,7 +58,6 @@ const ButtonWrapper = styled.div<
           cursor: "not-allowed",
         };
       }
-
       if (type === "PRIMARY") {
         return {
           backgroundColor: colorSet?.[300],
@@ -67,7 +66,6 @@ const ButtonWrapper = styled.div<
           cursor: "pointer",
         };
       }
-
       if (type === "SECONDARY") {
         return {
           backgroundColor: white,
@@ -76,7 +74,6 @@ const ButtonWrapper = styled.div<
           cursor: "pointer",
         };
       }
-
       if (type === "TEXT") {
         return {
           backgroundColor: white,
@@ -86,7 +83,6 @@ const ButtonWrapper = styled.div<
           cursor: "pointer",
         };
       }
-
       return {};
     })();
 
@@ -110,27 +106,9 @@ const ButtonWrapper = styled.div<
       ...(disabled
         ? {}
         : {
-            ":hover": getButtonStyleByType(
-              type,
-              pallet,
-              "HOVERED",
-              false,
-              theme
-            ) as CSSObject,
-            ":focus": getButtonStyleByType(
-              type,
-              pallet,
-              "FOCUSED",
-              false,
-              theme
-            ) as CSSObject,
-            ":active": getButtonStyleByType(
-              type,
-              pallet,
-              "PRESSED",
-              false,
-              theme
-            ) as CSSObject,
+            ":hover": getButtonStyleByType(type,pallet,"HOVERED",false,theme) as CSSObject,
+            ":focus": getButtonStyleByType(type,pallet,"FOCUSED",false,theme) as CSSObject,
+            ":active": getButtonStyleByType(type,pallet,"PRESSED",false,theme) as CSSObject,
           }),
     };
   }
