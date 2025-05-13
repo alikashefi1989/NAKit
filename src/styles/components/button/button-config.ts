@@ -1,346 +1,134 @@
 import { CSSProperties } from "react";
 import AppThemeModel from "../../../models/theme-model";
-import StoreModel from "../../../models/store-model";
 
 export type ButtonSize = "XS" | "S" | "M" | "L" | "XL";
-export type ButtonType =
-  | "FILLED"
-  | "OUTLINE"
-  | "TEXT"
-  | "FILLED_SECONDARY"
-  | "OUTLINE_SECONDARY"
-  | "GREY_OUTLINE"
-  | "SUCCESS"
-  | "ERROR"
-  | "SUCCESS_TEXT"
-  | "ERROR_TEXT";
+export type ButtonType = "PRIMARY" | "SECONDARY" | "TEXT";
 export type ButtonDirection = "rtl" | "ltr";
+export type PalLetType =
+  | "1-Primary"
+  | "2-Info"
+  | "3-Danger"
+  | "4-Green"
+  | "5-Accent"
+  | "6-Secondary"
+  | "7-Olive"
+  | "8-Neutral-Light"
+  | "9-Neutral-Dark"
+  | "10-Sunset"
+  | "11-Warning"
+  | "12-Seccess"
+  | "13-Velvet"
+export type StatusType = "ENABLED" | "HOVERED" | "PRESSED" | "FOCUSED";
 
-const buttonSizeConfig: Record<ButtonSize, CSSProperties> = {
+export const buttonSizeConfig: Record<ButtonSize, CSSProperties> = {
   XS: {
     height: "1.75rem",
     fontSize: "0.625rem",
     fontWeight: 600,
+    paddingBlock: "0.25rem",
   },
   S: {
-    height: "2.25rem",
+    height: "2rem",
     fontSize: "0.75rem",
     fontWeight: 700,
+    paddingBlock: "0.25rem",
   },
   M: {
     height: "2.5rem",
     fontSize: "1rem",
     fontWeight: 500,
-    // lineHeight: '1.5rem'
+    paddingBlock: "0.5rem",
   },
   L: {
     height: "2.75rem",
     fontSize: "1rem",
     fontWeight: 600,
+    paddingBlock: "0.75rem",
   },
   XL: {
-    height: "3rem",
+    height: "3.2rem",
     fontSize: "1rem",
     fontWeight: 600,
+    paddingBlock: "0.25rem",
   },
 };
 
-export default buttonSizeConfig;
+export const palletMap: Record<PalLetType, keyof AppThemeModel["color"]["ordinalColors"]> = {
+  "1-Primary": "primary",
+  "2-Info": "info",
+  "3-Danger": "danger",
+  "4-Green": "green",
+  "5-Accent": "accent",
+  "6-Secondary": "secondary",
+  "7-Olive": "olive",
+  "8-Neutral-Light": "neural_light",
+  "9-Neutral-Dark": "neural_dark",
+  "10-Sunset": "sunset",
+  "11-Warning": "warning",
+  "12-Seccess": "success",
+  "13-Velvet": "velvet",
+};
+
+const shadeMap: Record<ButtonType, Record<StatusType, number | "white">> = {
+  PRIMARY: { ENABLED: 300, HOVERED: 400, PRESSED: 200, FOCUSED: 400 },
+  SECONDARY: { ENABLED: 0, HOVERED: 0, PRESSED: 0, FOCUSED: 0 },
+  TEXT: { ENABLED: 0, HOVERED: 0, PRESSED: 0, FOCUSED: 0 },
+};
+
+const bgShadeMap: Record<ButtonType, Record<StatusType, number | "white">> = {
+  PRIMARY: { ENABLED: 300, HOVERED: 400, PRESSED: 200, FOCUSED: 400 },
+  SECONDARY: { ENABLED: "white", HOVERED: 1000, PRESSED: 800, FOCUSED: 1000 },
+  TEXT: { ENABLED: "white", HOVERED: 1000, PRESSED: 800, FOCUSED: 1000 },
+};
 
 export const getButtonStyleByType = (
   type: ButtonType,
-  hoverd: boolean,
+  pallet: PalLetType,
+  status: StatusType,
   disabled: boolean,
   theme?: AppThemeModel
 ): CSSProperties => {
+  if (disabled) {
+    return {
+      borderColor: "transparent",
+      backgroundColor: "transparent",
+      color: theme?.color?.ordinalColors?.neural_light[400],
+      cursor: "not-allowed",
+    };
+  }
+
+  const colorGroupKey = palletMap[pallet];
+  const colorSet = theme?.color?.ordinalColors?.[colorGroupKey];
+  const white = theme?.color?.solid?.white;
+
+  const getColor = (value: number | "white") =>
+    value === "white" ? white : colorSet?.[value as keyof typeof colorSet];
+
+  const bgColor = getColor(bgShadeMap[type][status]);
+  const textColor = getColor(shadeMap[type][status]);
+
   switch (type) {
-    case "FILLED":
-      if (disabled)
-        return {
-          borderColor: "transparent",
-          backgroundColor: theme?.color?.ordinalColors.neural_light[100],
-          color: theme?.color?.ordinalColors?.neural_light[400],
-          cursor: "not-allowed",
-        };
-      if (hoverd)
-        return {
-          backgroundColor: theme?.color?.ordinalColors?.primary[700],
-          cursor: "pointer",
-        };
+    case "PRIMARY":
       return {
-        paddingInline: "1.5rem",
-        paddingBlock: "0.5rem",
-        borderColor: "transparent",
-        borderRadius: "0.375rem",
-        backgroundColor: theme?.color?.ordinalColors?.primary[500],
-        color: theme?.color?.solid?.white,
+        backgroundColor: bgColor,
+        color: white,
+        border: "none",
         cursor: "pointer",
       };
-    case "OUTLINE":
-      if (disabled)
-        return {
-          borderColor: theme?.color?.ordinalColors?.neural_light[400],
-          color: theme?.color?.ordinalColors?.neural_light[400],
-          backgroundColor: theme?.color?.ordinalColors?.neural_light[100],
-          cursor: "not-allowed",
-        };
-      if (hoverd)
-        return {
-          borderColor: theme?.color?.ordinalColors?.primary[700],
-          color: theme?.color?.ordinalColors?.primary[500],
-          backgroundColor: theme?.color?.ordinalColors?.neural_light[50],
-          cursor: "pointer",
-        };
+    case "SECONDARY":
       return {
-        paddingInline: "1.5rem",
-        paddingBlock: "0.5rem",
-        borderRadius: "0.375rem",
-        borderColor: theme?.color?.ordinalColors?.primary[500],
-        color: theme?.color?.ordinalColors?.primary[500],
-        backgroundColor: "transparent",
+        backgroundColor: bgColor,
+        color: textColor,
+        border: `${status === "FOCUSED" ? "2px" : "1px"} solid ${textColor}`,
         cursor: "pointer",
       };
     case "TEXT":
-      if (disabled)
-        return {
-          borderColor: "transparent",
-          backgroundColor: "transparent",
-          color: theme?.color?.ordinalColors?.neural_light[400],
-          cursor: "not-allowed",
-        };
-      if (hoverd)
-        return {
-          borderColor: "transparent",
-          backgroundColor: "transparent",
-          color: theme?.color?.ordinalColors?.primary[700],
-          cursor: "pointer",
-        };
       return {
-        borderColor: "transparent",
-        backgroundColor: "transparent",
-        color: theme?.color?.ordinalColors?.primary[500],
+        backgroundColor: bgColor,
+        color: textColor,
+        border: "none",
+        borderRadius: "1.5rem",
         cursor: "pointer",
-      };
-    case "FILLED_SECONDARY":
-      if (disabled)
-        return {
-          borderColor: "transparent",
-          backgroundColor: theme?.color?.ordinalColors?.neural_light[100],
-          color: theme?.color?.ordinalColors?.neural_light[400],
-          cursor: "not-allowed",
-        };
-      if (hoverd)
-        return {
-          borderColor: "transparent",
-          color: theme?.color?.ordinalColors?.primary[700],
-          backgroundColor: theme?.color?.ordinalColors?.primary[100],
-          cursor: "pointer",
-        };
-      return {
-        paddingInline: "1.5rem",
-        paddingBlock: "0.5rem",
-        borderRadius: "0.375rem",
-        borderColor: "transparent",
-        color: theme?.color?.ordinalColors?.primary[500],
-        backgroundColor: theme?.color?.ordinalColors?.primary[0],
-        cursor: "pointer",
-      };
-    case "OUTLINE_SECONDARY":
-      if (disabled)
-        return {
-          borderColor: "transparent",
-          backgroundColor: theme?.color?.ordinalColors?.neural_light[100],
-          color: theme?.color?.ordinalColors?.neural_light[400],
-          cursor: "not-allowed",
-        };
-      if (hoverd)
-        return {
-          borderColor: theme?.color?.ordinalColors?.neural_light[200],
-          color: theme?.color?.ordinalColors?.primary[500],
-          backgroundColor: theme?.color?.ordinalColors?.neural_light[50],
-          cursor: "pointer",
-        };
-      return {
-        paddingInline: "1.5rem",
-        paddingBlock: "0.5rem",
-        borderRadius: "0.375rem",
-        borderColor: theme?.color?.ordinalColors?.neural_light[200],
-        color: theme?.color?.ordinalColors?.primary[500],
-        backgroundColor: theme?.color?.solid?.white,
-        cursor: "pointer",
-      };
-    case "GREY_OUTLINE":
-      if (disabled)
-        return {
-          borderColor: "transparent",
-          color: theme?.color?.ordinalColors?.neural_light[400],
-          backgroundColor: theme?.color?.ordinalColors?.neural_light[100],
-          cursor: "not-allowed",
-        };
-      if (hoverd)
-        return {
-          borderColor: theme?.color?.ordinalColors?.neural_light[200],
-          color: theme?.color?.ordinalColors?.neural_light[900],
-          backgroundColor: theme?.color?.ordinalColors?.neural_light[50],
-          cursor: "pointer",
-        };
-      return {
-        borderColor: "transparent",
-        backgroundColor: "transparent",
-        color: theme?.color?.ordinalColors?.primary[500],
-        cursor: "pointer",
-      };
-    case "SUCCESS":
-      if (disabled)
-        return {
-          borderColor: "transparent",
-          color: theme?.color?.ordinalColors?.neural_light[400],
-          backgroundColor: theme?.color?.ordinalColors?.neural_light[100],
-          cursor: "not-allowed",
-        };
-      if (hoverd)
-        return {
-          borderColor: theme?.color?.ordinalColors?.success[700],
-          color: theme?.color?.solid?.white,
-          backgroundColor: theme?.color?.ordinalColors?.success[700],
-          cursor: "pointer",
-        };
-      return {
-        borderColor: theme?.color?.ordinalColors?.success[600],
-        color: theme?.color?.solid?.white,
-        backgroundColor: theme?.color?.ordinalColors?.success[600],
-        cursor: "pointer",
-      };
-    case "ERROR":
-      if (disabled)
-        return {
-          borderColor: "transparent",
-          color: theme?.color?.ordinalColors?.neural_light[400],
-          backgroundColor: theme?.color?.ordinalColors?.neural_light[100],
-          cursor: "not-allowed",
-        };
-      if (hoverd)
-        return {
-          borderColor: theme?.color?.ordinalColors?.danger[600],
-          color: theme?.color?.solid?.white,
-          backgroundColor: theme?.color?.ordinalColors?.danger[600],
-          cursor: "pointer",
-        };
-      return {
-        borderColor: theme?.color?.ordinalColors?.danger[500],
-        color: theme?.color?.solid?.white,
-        backgroundColor: theme?.color?.ordinalColors?.danger[500],
-        cursor: "pointer",
-      };
-    case "SUCCESS_TEXT":
-      if (disabled)
-        return {
-          borderColor: "transparent",
-          backgroundColor: "transparent",
-          color: theme?.color?.ordinalColors?.neural_light[400],
-          cursor: "not-allowed",
-        };
-      if (hoverd)
-        return {
-          borderColor: "transparent",
-          backgroundColor: "transparent",
-          color: theme?.color?.ordinalColors?.success[700],
-          cursor: "pointer",
-        };
-      return {
-        borderColor: "transparent",
-        backgroundColor: "transparent",
-        color: theme?.color?.ordinalColors?.success[600],
-        cursor: "pointer",
-      };
-    case "ERROR_TEXT":
-      if (disabled)
-        return {
-          borderColor: "transparent",
-          backgroundColor: "transparent",
-          color: theme?.color?.ordinalColors?.neural_light[400],
-          cursor: "not-allowed",
-        };
-      if (hoverd)
-        return {
-          borderColor: "transparent",
-          backgroundColor: "transparent",
-          color: theme?.color?.ordinalColors?.danger[600],
-          cursor: "pointer",
-        };
-      return {
-        borderColor: "transparent",
-        backgroundColor: "transparent",
-        color: theme?.color?.ordinalColors?.danger[500],
-        cursor: "pointer",
-      };
-
-    default:
-      return {};
-  }
-};
-
-export const getPaddingByIconAndType = (
-  hasIcon: boolean,
-  size: keyof typeof buttonSizeConfig,
-  direction: StoreModel["language"]["dir"]
-): CSSProperties => {
-  switch (size) {
-    case "XS":
-      if (hasIcon)
-        return {
-          paddingInline: "0.75rem",
-          paddingBlock: "0.25rem",
-          paddingLeft: direction === "rtl" ? "0.5rem" : "0.75rem",
-          paddingRight: direction === "rtl" ? "0.75rem" : "0.5rem",
-        };
-      return {
-        paddingBlock: "0.25rem",
-        paddingInline: "0.75rem",
-      };
-    case "S":
-      if (hasIcon)
-        return {
-          paddingBlock: "0.625rem",
-          paddingLeft: direction === "rtl" ? "0.75rem" : "1rem",
-          paddingRight: direction === "rtl" ? "1rem" : "0.75rem",
-        };
-      return {
-        paddingBlock: "0.375rem",
-        paddingInline: "1rem",
-      };
-    case "M":
-      if (hasIcon)
-        return {
-          paddingBlock: "0.5rem",
-          paddingLeft: direction === "rtl" ? "1.5rem" : "1rem",
-          paddingRight: direction === "rtl" ? "1rem" : "1.5rem",
-        };
-      return {
-        paddingBlock: "0.5rem",
-        paddingInline: "1.5rem",
-      };
-    case "L":
-      if (hasIcon)
-        return {
-          paddingBlock: "0.75rem",
-          paddingLeft: direction === "rtl" ? "1.25rem" : "1.5rem",
-          paddingRight: direction === "rtl" ? "1.5rem" : "1.25rem",
-        };
-      return {
-        paddingBlock: "0.5rem",
-        paddingInline: "1.5rem",
-      };
-    case "XL":
-      if (hasIcon)
-        return {
-          paddingBlock: "0.8125rem",
-          paddingLeft: direction === "rtl" ? "1.25rem" : "1.5rem",
-          paddingRight: direction === "rtl" ? "1.5rem" : "1.25rem",
-        };
-      return {
-        paddingBlock: "0.5rem",
-        paddingInline: "1.5rem",
       };
     default:
       return {};
