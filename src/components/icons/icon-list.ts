@@ -38,10 +38,13 @@ import WifiIcon from './hotel/wifi'
 import TvIcon from './hotel/tv-light'
 import TeaCupIcon from './hotel/tea-cup'
 import UserIcon from './hotel/user'
-import BarIcon from './hotel/Bar'
+import BarIcon from './hotel/bar'
 import Restuarant from './hotel/restuarant'
 import BedIcon from './hotel/bed'
-
+import BedroomIcon from './hotel/bedroom'
+import ProfileUserIcon from './hotel/profile-user'
+import NoteIcon from './content-edit/note'
+import TaskIcon from './content-edit/task'
 
 const iconList = {
     triangleError: TriangleError,
@@ -86,7 +89,11 @@ const iconList = {
     UserIcon:UserIcon,
     BarIcon:BarIcon,
     Restuarant:Restuarant,
-    BedIcon:BedIcon
+    BedIcon:BedIcon,
+    BedroomIcon:BedroomIcon,
+    ProfileUserIcon:ProfileUserIcon,
+    NoteIcon:NoteIcon,
+    TaskIcon:TaskIcon
 }
 
 export default iconList

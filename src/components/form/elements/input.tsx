@@ -6,7 +6,6 @@ import {
     MouseEvent,
     useCallback,
     useMemo,
-    useState,
   } from "react";
   import { FormElementBaseProps } from "../index";
   import FormElementWrapper from "../../../styles/components/form";
@@ -16,12 +15,14 @@ import {
     InputWrapper,
     InsideIconsWrapper,
     FieldsetAnimated,
+    OutsideLabel,
   } from "../../../styles/components/form/elements/input";
   
   export interface InputProps<EntityModel extends Record<string, any>>
     extends FormElementBaseProps<EntityModel> {
     type?: undefined | HTMLInputTypeAttribute;
     labelStyle?: CSSProperties;
+    labelVariant : "inside" | "outside";
   }
   
   const Input = <EntityModel extends Record<string, any>>({
@@ -45,11 +46,9 @@ import {
     labelStyle,
     isRequired,
     characterLimit,
+    labelVariant,
     ...rest
   }: InputProps<EntityModel>) => {
-    const [focused, setFocused] = useState(false);
-    const [value, setValue] = useState(data.defaultValue[name] || "");
-  
     const hasError: boolean = useMemo(() => {
       return !!(
         data.reactHookFormObject.formState.errors &&
@@ -63,20 +62,7 @@ import {
       registerOptions ? { ...registerOptions } : undefined
     );
   
-    const { ref, onChange: rhfOnChange, onBlur: rhfOnBlur, ...registerRest } =
-      registerResult;
-  
-    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-      setFocused(false);
-      rhfOnBlur?.(e);
-    };
-  
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(e.target.value);
-      rhfOnChange?.(e);
-    };
-  
-    const isActive = focused || !!value;
+    const { ref, ...registerRest } = registerResult;
   
     const onLabelClick = useCallback((event: MouseEvent<HTMLLegendElement>) => {
       event.currentTarget.parentElement?.querySelector("input")?.focus();
@@ -88,7 +74,7 @@ import {
           <InputUi
             type={type}
             key={name.toString()}
-            defaultValue={value}
+            defaultValue={data.defaultValue[name]}
             ref={ref}
             size={size}
             error={hasError}
@@ -97,11 +83,8 @@ import {
             hasIcon={!!Icon}
             hasResetter={!!Resetter}
             dir={dir}
-            placeholder=" "
-            isActive={isActive}
-            onFocus={() => setFocused(true)}
-            onBlur={handleBlur}
-            onChange={handleChange}
+            placeholder={labelVariant === "outside" ? "" : " "}
+            labelVariant={labelVariant}
             onKeyDown={
               type === "number"
                 ? (event: KeyboardEvent<HTMLInputElement>) =>
@@ -113,19 +96,29 @@ import {
             {...rest}
           />
   
-          {isActive && (
-            <FieldsetAnimated className={isActive ? "active" : ""}>
-              <legend onClick={onLabelClick}>
-                {Label && (
-                  <Label
-                    style={labelStyle || {}}
-                    labelText={labelText || ""}
-                    isRequired={isRequired}
-                  />
-                )}
-              </legend>
-            </FieldsetAnimated>
+  {labelVariant === "outside" ? (
+        <OutsideLabel className="outside-label">
+          {Label && (
+            <Label
+              style={labelStyle || {}}
+              labelText={labelText || ""}
+              isRequired={isRequired}
+            />
           )}
+        </OutsideLabel>
+      ) : (
+        <FieldsetAnimated>
+          <legend onClick={onLabelClick}>
+            {Label && (
+              <Label
+                style={labelStyle || {}}
+                labelText={labelText || ""}
+                isRequired={isRequired}
+              />
+            )}
+          </legend>
+        </FieldsetAnimated>
+      )}
   
           {(Icon || Resetter) && (
             <InsideIconsWrapper dir={dir ?? "rtl"}>

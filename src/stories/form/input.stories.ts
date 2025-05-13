@@ -23,6 +23,7 @@ args: {
     isRequired: false,
     characterLimit: undefined,
     infoText: '',
+    labelVariant:'outside',
     data: {
     reactHookFormObject: {
         register: () => ({}),

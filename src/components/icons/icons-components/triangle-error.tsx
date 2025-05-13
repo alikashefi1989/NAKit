@@ -3,17 +3,14 @@ import { IconProps } from '../icon'
 
 const TriangleError: FC<Pick<IconProps, 'isFill'>> = ({ isFill }) => {
     if (isFill) return (
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 7.5V11.6667" stroke="#DC362E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M10.0001 17.8417H4.95011C2.05844 17.8417 0.850107 15.775 2.25011 13.25L4.85011 8.56668L7.30011 4.16668C8.78344 1.49168 11.2168 1.49168 12.7001 4.16668L15.1501 8.57501L17.7501 13.2583C19.1501 15.7833 17.9334 17.85 15.0501 17.85H10.0001V17.8417Z" stroke="#DC362E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M9.99536 14.1667H10.0028" stroke="#DC362E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="#FF0000" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 7.5H13V9.5H11V7.5ZM11 11.5H13V17.5H11V11.5ZM12 2.5C6.48 2.5 2 6.98 2 12.5C2 18.02 6.48 22.5 12 22.5C17.52 22.5 22 18.02 22 12.5C22 6.98 17.52 2.5 12 2.5ZM12 20.5C7.59 20.5 4 16.91 4 12.5C4 8.09 7.59 4.5 12 4.5C16.41 4.5 20 8.09 20 12.5C20 16.91 16.41 20.5 12 20.5Z" fill="#FF0000"/>
         </svg>
+
     )
     return (
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 7.5V11.6667" stroke="#DC362E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M10.0001 17.8417H4.95011C2.05844 17.8417 0.850107 15.775 2.25011 13.25L4.85011 8.56668L7.30011 4.16668C8.78344 1.49168 11.2168 1.49168 12.7001 4.16668L15.1501 8.57501L17.7501 13.2583C19.1501 15.7833 17.9334 17.85 15.0501 17.85H10.0001V17.8417Z" stroke="#DC362E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M9.99536 14.1667H10.0028" stroke="#DC362E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="#FF0000" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 7.5H13V9.5H11V7.5ZM11 11.5H13V17.5H11V11.5ZM12 2.5C6.48 2.5 2 6.98 2 12.5C2 18.02 6.48 22.5 12 22.5C17.52 22.5 22 18.02 22 12.5C22 6.98 17.52 2.5 12 2.5ZM12 20.5C7.59 20.5 4 16.91 4 12.5C4 8.09 7.59 4.5 12 4.5C16.41 4.5 20 8.09 20 12.5C20 16.91 16.41 20.5 12 20.5Z" fill="#FF0000"/>
         </svg>
     )
 }
