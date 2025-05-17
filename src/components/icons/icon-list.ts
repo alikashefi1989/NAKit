@@ -45,6 +45,9 @@ import BedroomIcon from './hotel/bedroom'
 import ProfileUserIcon from './hotel/profile-user'
 import NoteIcon from './content-edit/note'
 import TaskIcon from './content-edit/task'
+import TickIcon from './essetional/tick'
+import MaximizeIcon from './grid/maximize'
+import ArrowRightGreen from './arrow/arrow-right-green'
 
 const iconList = {
     triangleError: TriangleError,
@@ -93,7 +96,10 @@ const iconList = {
     BedroomIcon:BedroomIcon,
     ProfileUserIcon:ProfileUserIcon,
     NoteIcon:NoteIcon,
-    TaskIcon:TaskIcon
+    TaskIcon:TaskIcon,
+    TickIcon:TickIcon,
+    MaximizeIcon:MaximizeIcon,
+    ArrowRightGreen:ArrowRightGreen
 }
 
 export default iconList

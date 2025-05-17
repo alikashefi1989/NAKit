@@ -25,7 +25,7 @@ interface ButtonWithoutIconProps extends Omit<ButtonBaseProps, 'hasIcon'> {
 
 export type ButtonProps = ButtonWithIconProps | ButtonWithoutIconProps
 
-const Button: FC<ButtonProps> = ({ size, type, disabled, width, title, loading, hasIcon, icon: Icon, iconName, style, onClick, pallet }) => {
+const Button: FC<ButtonProps> = ({ size, type, disabled, width, title, loading, hasIcon, icon: Icon, iconName, style ,pallet , iconPosition = 'end', onClick}) => {
     const iconSize: IconWrapperProps['size'] = useMemo(() => {
         if (size === 'XS' || size === 'S') return '0.75'
         if (size === 'M' || size === 'L') return '1'
@@ -50,32 +50,39 @@ const Button: FC<ButtonProps> = ({ size, type, disabled, width, title, loading, 
             width={width}
             hasIcon={hasIcon}
             style={style}
-            onClick={onClickHandler}
             pallet={pallet}
+            iconPosition={iconPosition}
+            onClick={onClickHandler}
+            
         >
-            {
-                loading
-                    ? <ButtonLoading type={type} />
-                    : <>
-                        {
-                            title ? (
-                                <ButtonTitle
-                                    size={size}
-                                >
-                                    {title}
-                                </ButtonTitle>
-                            ) : null
-                        }
-
-                        {(Icon && iconName)
-                            ? <Icon
+{
+                loading ? (
+                    <ButtonLoading type={type} />
+                ) : (
+                    <>
+                        {hasIcon && iconPosition === 'start' && Icon && iconName && (
+                            <Icon
                                 iconName={iconName}
                                 size={iconSize}
-                                style={iconStyle}
+                                style={{ ...iconStyle, marginLeft: '0.5rem' }}
                             />
-                            : null
-                        }
+                        )}
+
+                        {title && (
+                            <ButtonTitle size={size}>
+                                {title}
+                            </ButtonTitle>
+                        )}
+
+                        {hasIcon && iconPosition === 'end' && Icon && iconName && (
+                            <Icon
+                                iconName={iconName}
+                                size={iconSize}
+                                style={{ ...iconStyle, marginRight: '0.5rem' }}
+                            />
+                        )}
                     </>
+                )
             }
         </ButtonWrapper>
     )

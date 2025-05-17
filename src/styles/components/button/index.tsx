@@ -22,6 +22,7 @@ export interface ButtonWrapperProps {
   hasIcon: boolean;
   style?: CSSProperties;
   pallet: PalLetType;
+  iconPosition?: 'start' | 'end';
   direction?: ButtonDirection;
 }
 
