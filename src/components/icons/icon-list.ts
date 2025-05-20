@@ -48,6 +48,11 @@ import TaskIcon from './content-edit/task'
 import TickIcon from './essetional/tick'
 import MaximizeIcon from './grid/maximize'
 import ArrowRightGreen from './arrow/arrow-right-green'
+import ArchiveBookIcon from './content-edit/archive-book'
+import HomeEssetional from './essetional/home'
+import HomeTwoEssetional from './essetional/home-2'
+import CallIcon from './essetional/call'
+import ExitIcon from './arrow/exit'
 
 const iconList = {
     triangleError: TriangleError,
@@ -99,7 +104,12 @@ const iconList = {
     TaskIcon:TaskIcon,
     TickIcon:TickIcon,
     MaximizeIcon:MaximizeIcon,
-    ArrowRightGreen:ArrowRightGreen
+    ArrowRightGreen:ArrowRightGreen,
+    ArchiveBookIcon:ArchiveBookIcon,
+    HomeEssetional:HomeEssetional,
+    HomeTwoEssetional:HomeTwoEssetional,
+    CallIcon:CallIcon,
+    ExitIcon:ExitIcon
 }
 
 export default iconList

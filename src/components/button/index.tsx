@@ -67,7 +67,14 @@ const Button: FC<ButtonProps> = ({ size, type, disabled, width, title, loading, 
                                 style={{ ...iconStyle, marginLeft: '0.5rem' }}
                             />
                         )}
-
+                        {hasIcon && iconPosition === 'center' && Icon && iconName && (
+                            <Icon
+                                iconName={iconName}
+                                size={iconSize}
+                                style={iconStyle}
+                            />
+                        )}
+                        
                         {title && (
                             <ButtonTitle size={size}>
                                 {title}
